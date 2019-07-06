@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.springboot'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    testImplementation 'io.projectreactor:reactor-test'
+    //share
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //Accessing JPA Data with REST：https://spring.io/guides/gs/accessing-data-rest/
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'com.h2database:h2'
+    //Accessing Neo4j Data with REST：https://spring.io/guides/gs/accessing-neo4j-data-rest/
+    implementation 'org.springframework.data:spring-data-neo4j'
+    implementation 'org.hibernate.validator:hibernate-validator'
+    //Accessing MongoDB Data with REST：https://spring.io/guides/gs/accessing-mongodb-data-rest/
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+}
